@@ -1,10 +1,11 @@
 import Layout from './components/Layout/Layout';
-import Home from './pages/Home/Home';
+import Shop from './pages/Shop/Shop';
 
 function App() {
   return (
     <Layout>
-      <Home />
+      {/* <Home /> */}
+      <Shop />
     </Layout>
   );
 }
