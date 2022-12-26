@@ -1,11 +1,13 @@
 import Layout from './components/Layout/Layout';
-import Shop from './pages/Shop/Shop';
+import Checkout from './pages/Checkout/Checkout';
 
 function App() {
   return (
     <Layout>
       {/* <Home /> */}
-      <Shop />
+      {/* <Shop /> */}
+      {/* <ProductDetail /> */}
+      <Checkout />
     </Layout>
   );
 }

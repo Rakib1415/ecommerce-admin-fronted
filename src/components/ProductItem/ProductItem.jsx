@@ -1,3 +1,5 @@
+import CustomButton from '../CustomButton/CustomButton';
+
 function ProductItem({ item: { title, imgUrl, price, colorNumber } }) {
   return (
     <div className="border border-slate-100 shadow-lg">
@@ -18,12 +20,9 @@ function ProductItem({ item: { title, imgUrl, price, colorNumber } }) {
         </p>
       </div>
 
-      <button
-        type="button"
-        className="w-full items-center justify-center bg-black text-white px-8 py-3 mt-3"
-      >
+      <CustomButton type="button">
         <span className="text-sm font-medium px-2"> View Details </span>
-      </button>
+      </CustomButton>
     </div>
   );
 }
