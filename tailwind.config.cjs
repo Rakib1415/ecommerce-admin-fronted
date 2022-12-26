@@ -2,7 +2,17 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    container: {
+      center: true,
+      padding: '1rem',
+    },
+
+    extend: {
+      fontFamily: {
+        poppins: "'Poppins', sans-serif",
+        roboto: "'Roboto Slab', serif",
+      },
+    },
   },
   plugins: [],
 };

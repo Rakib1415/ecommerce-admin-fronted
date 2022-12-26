@@ -7,6 +7,11 @@ function Header() {
     <>
       <TopNavbar />
       <Navbar />
+      <div className="h-8 bg-slate-300">
+        <h5 className="font-poppins text-sm font-light text-center py-1">
+          Explore our shop. It's totally free!!!
+        </h5>
+      </div>
     </>
   );
 }

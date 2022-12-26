@@ -1,7 +1,12 @@
 import Layout from './components/Layout/Layout';
+import Home from './pages/Home/Home';
 
 function App() {
-  return <Layout>i am a children component</Layout>;
+  return (
+    <Layout>
+      <Home />
+    </Layout>
+  );
 }
 
 export default App;
