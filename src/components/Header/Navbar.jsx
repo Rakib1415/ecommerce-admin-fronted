@@ -76,7 +76,13 @@ function Navbar() {
               href="/src/catalog.html"
               className="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
             >
-              LOGIN
+              SIGNUP
+            </a>
+            <a
+              href="/src/catalog.html"
+              className="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
+            >
+              SIGNIN
             </a>
             <a
               href="/src/home.html"
