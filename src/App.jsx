@@ -40,11 +40,3 @@ function App() {
 }
 
 export default App;
-
-//  {/* <Home /> */}
-//       {/* <Shop /> */}
-//       {/* <ProductDetail /> */}
-//       {/* <Checkout /> */}
-//       {/* <SignIn /> */}
-//       {/* <Signup /> */}
-//       {/* <Admin /> */}
