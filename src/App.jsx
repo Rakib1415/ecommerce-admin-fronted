@@ -1,5 +1,5 @@
 import Layout from './components/Layout/Layout';
-import Signup from './pages/Signup/Signup';
+import Admin from './pages/Admin-dashboard/Admin';
 
 function App() {
   return (
@@ -9,7 +9,9 @@ function App() {
       {/* <ProductDetail /> */}
       {/* <Checkout /> */}
       {/* <SignIn /> */}
-      <Signup />
+      {/* <Signup /> */}
+      {/* <Admin /> */}
+      <Admin />
     </Layout>
   );
 }
