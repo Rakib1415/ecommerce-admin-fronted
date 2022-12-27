@@ -1,5 +1,5 @@
 import Layout from './components/Layout/Layout';
-import Checkout from './pages/Checkout/Checkout';
+import Signup from './pages/Signup/Signup';
 
 function App() {
   return (
@@ -7,7 +7,9 @@ function App() {
       {/* <Home /> */}
       {/* <Shop /> */}
       {/* <ProductDetail /> */}
-      <Checkout />
+      {/* <Checkout /> */}
+      {/* <SignIn /> */}
+      <Signup />
     </Layout>
   );
 }
