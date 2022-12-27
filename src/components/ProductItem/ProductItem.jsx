@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import CustomButton from '../CustomButton/CustomButton';
 
 function ProductItem({ item: { title, imgUrl, price, colorNumber } }) {
@@ -21,7 +22,10 @@ function ProductItem({ item: { title, imgUrl, price, colorNumber } }) {
       </div>
 
       <CustomButton type="button">
-        <span className="text-sm font-medium px-2"> View Details </span>
+        <Link to="/shop/product/2" className="text-sm font-medium px-2">
+          {' '}
+          View Details{' '}
+        </Link>
       </CustomButton>
     </div>
   );

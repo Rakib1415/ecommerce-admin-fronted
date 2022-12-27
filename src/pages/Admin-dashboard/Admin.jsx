@@ -1,13 +1,10 @@
+import { Outlet } from 'react-router-dom';
 import SidebarLayout from '../../components/Sidebar/SidebarLayout';
-import AdminAddProduct from '../Admin-add-product/AdminAddProduct';
 
 function Admin() {
   return (
     <SidebarLayout>
-      {/* <DashboardOverview /> */}
-      {/* <AdminProducts /> */}
-      {/* <AdminUsers /> */}
-      <AdminAddProduct />
+      <Outlet />
     </SidebarLayout>
   );
 }

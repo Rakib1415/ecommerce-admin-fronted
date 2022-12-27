@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
+const activeStyle = {
+  color: 'yellow',
+};
 function Navbar() {
   const [toggleHamburger, setToggleHamburger] = useState(false);
   const showNavbar = () => {
@@ -11,12 +15,12 @@ function Navbar() {
       <div className="container px-6 py-3 mx-auto md:flex">
         <div className="flex items-center justify-between">
           <div>
-            <a
+            <Link
               className="text-2xl font-bold text-white transition-colors duration-300 transform lg:text-3xl"
-              href="/"
+              to="/"
             >
               URBANSTYLE
-            </a>
+            </Link>
           </div>
           <div className="flex lg:hidden">
             <button
@@ -66,34 +70,38 @@ function Navbar() {
           className={`${showToggleHamburger} absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-black md:mt-0 md:p-0 md:top-0 md:relative md:opacity-100 md:translate-x-0 md:flex md:items-center md:justify-between`}
         >
           <div className="flex flex-col px-2 -mx-4 md:flex-row md:mx-10 md:py-0">
-            <a
-              href="/src/home.html"
+            <NavLink
+              to="/shop"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
               className="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
             >
               SHOP
-            </a>
-            <a
-              href="/src/catalog.html"
+            </NavLink>
+            <NavLink
+              to="/signup"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
               className="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
             >
               SIGNUP
-            </a>
-            <a
-              href="/src/catalog.html"
+            </NavLink>
+            <NavLink
+              to="/signin"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
               className="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
             >
               SIGNIN
-            </a>
-            <a
-              href="/src/home.html"
+            </NavLink>
+            <NavLink
+              to="/admin"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
               className="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
             >
-              ADMIN DASHBOARD
-            </a>
+              ADMIN
+            </NavLink>
           </div>
 
           <div className="relative mt-4 md:mt-0 flex">
-            <div className="relative px-5 py-1 cursor-pointer">
+            <Link to="/checkout" className="relative px-5 py-1 cursor-pointer">
               <span className="text-white absolute top-2.5 right-8">0</span>
               <svg
                 style={{ color: 'white' }}
@@ -109,7 +117,7 @@ function Navbar() {
                   fill="white"
                 />
               </svg>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

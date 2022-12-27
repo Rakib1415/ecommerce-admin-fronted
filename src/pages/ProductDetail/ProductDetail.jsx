@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
 function ProductDetail() {
@@ -97,7 +98,10 @@ function ProductDetail() {
                 </svg>
               </CustomButton>
               <CustomButton inverted type="button">
-                <span className="text-sm font-medium"> Go Back </span>
+                <Link to="/shop" className="text-sm font-medium">
+                  {' '}
+                  Go Back{' '}
+                </Link>
               </CustomButton>
             </div>
           </div>

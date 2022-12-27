@@ -1,11 +1,17 @@
+import { NavLink } from 'react-router-dom';
+
+const activeStyle = {
+  color: 'yellow',
+};
 function Sidebar() {
   return (
     <div className="py-1 w-1/4 md:min-h-screen">
       <div className="md:absolute left-0 top-38 md:w-72 w-48 h-auto bg-gray-800 shadow-md">
         <div className="py-5">
-          <a
-            className="flex items-center my-1 px-4 text-white py-3 border-l-4 border-blue-600 bg-gray-900"
-            href="#"
+          <NavLink
+            className="flex items-center my-1 px-4 text-white py-3 border-transparent border-l-4 hover:border-blue-600 hover:bg-gray-900"
+            to="/admin/dashboard"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -22,10 +28,11 @@ function Sidebar() {
               />
             </svg>
             Dashboard
-          </a>
-          <a
+          </NavLink>
+          <NavLink
             className="flex items-center my-1 px-4 text-white py-3 border-transparent border-l-4 hover:border-blue-600 hover:bg-gray-900"
-            href="#"
+            to="/admin/product"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -42,10 +49,11 @@ function Sidebar() {
               />
             </svg>
             Products
-          </a>
-          <a
+          </NavLink>
+          <NavLink
             className="flex items-center my-1 px-4 text-white py-3 border-transparent border-l-4 hover:border-blue-600 hover:bg-gray-900"
-            href="#"
+            to="/admin/add-product"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -62,10 +70,11 @@ function Sidebar() {
               />
             </svg>
             Add Product
-          </a>
-          <a
+          </NavLink>
+          <NavLink
             className="flex items-center my-1 px-4 text-white py-3 border-transparent border-l-4 hover:border-blue-600 hover:bg-gray-900"
-            href="#"
+            to="/admin/user"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +91,7 @@ function Sidebar() {
               />
             </svg>
             Users
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>
