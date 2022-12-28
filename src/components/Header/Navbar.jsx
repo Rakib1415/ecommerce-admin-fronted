@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
+import { logout } from '../../stores/features/authSlice';
 
 const activeStyle = {
   color: 'yellow',
 };
 function Navbar() {
   const [toggleHamburger, setToggleHamburger] = useState(false);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const showNavbar = () => {
     setToggleHamburger(!toggleHamburger);
   };
@@ -84,13 +88,24 @@ function Navbar() {
             >
               SIGNUP
             </NavLink>
-            <NavLink
-              to="/signin"
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              className="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
-            >
-              SIGNIN
-            </NavLink>
+            {isLoggedIn ? (
+              <NavLink
+                onClick={() => dispatch(logout())}
+                to="/signin"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                className="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
+              >
+                LOGOUT
+              </NavLink>
+            ) : (
+              <NavLink
+                to="/signin"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                className="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
+              >
+                LOGIN
+              </NavLink>
+            )}
             <NavLink
               to="/admin"
               style={({ isActive }) => (isActive ? activeStyle : undefined)}

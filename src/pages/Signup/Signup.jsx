@@ -1,7 +1,14 @@
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import SignupForm from '../../components/SignupForm/SignupForm';
+import Spinner from '../../components/Spinner/Spinner';
 
 function Signup() {
-  return (
+  const { isLoading } = useSelector((state) => state.auth);
+
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className="container min-h-screen w-screen my-12 flex items-start justify-center">
       <div className="w-1/2 flex flex-col">
         <div className="mb-8 text-center">
@@ -15,9 +22,12 @@ function Signup() {
           You Already have an shopping account?
         </p>
         <p className="px-6 text-MD font-poppins text-center">
-          <a href="#" className="text-black underline hover:text-blue-600">
+          <Link
+            to="/signin"
+            className="text-black underline hover:text-blue-600"
+          >
             Sign In To Your Account
-          </a>
+          </Link>
         </p>
       </div>
     </div>
