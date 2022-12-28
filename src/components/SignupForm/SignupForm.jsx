@@ -3,8 +3,9 @@ import CustomButton from '../CustomButton/CustomButton';
 import FormInput from '../FormInput/FormInput';
 
 const initialState = {
-  phone: '',
+  username: '',
   email: '',
+  phone: '',
   password: '',
   confirmPass: '',
 };
@@ -12,16 +13,39 @@ const initialState = {
 function SignupForm() {
   const [formState, setFormState] = useState(initialState);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formState.password !== formState.confirmPass) {
+      alert('password and confirm password does not match!');
+    } else {
+      console.log(formState);
+      setFormState(initialState);
+    }
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormState((prevState) => setFormState({ ...prevState, [name]: value }));
+    setFormState((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
   };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
+      <FormInput
+        handleChange={handleChange}
+        label="Username"
+        value={formState?.username}
+        type="text"
+        name="username"
+        required
+      />
       <FormInput
         handleChange={handleChange}
         label="Your Email"
-        value={formState.email}
+        value={formState?.email}
         type="email"
         name="email"
         required
@@ -29,15 +53,15 @@ function SignupForm() {
       <FormInput
         handleChange={handleChange}
         label="Your Phone Number"
-        value={formState.phone}
-        type="number"
+        value={formState?.phone}
+        type="text"
         name="phone"
         required
       />
       <FormInput
         handleChange={handleChange}
         label="Your Password"
-        value={formState.password}
+        value={formState?.password}
         type="password"
         name="password"
         required
@@ -45,7 +69,7 @@ function SignupForm() {
       <FormInput
         handleChange={handleChange}
         label="confirm password"
-        value={formState.confirmPass}
+        value={formState?.confirmPass}
         type="password"
         name="confirmPass"
         required

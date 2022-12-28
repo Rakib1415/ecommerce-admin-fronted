@@ -4,6 +4,7 @@ function FormInput({ handleChange, label, ...otherProps }) {
   return (
     <div className="relative z-0 mb-6 w-full group">
       <input
+        onChange={handleChange}
         {...otherProps}
         id="floating_email"
         placeholder=" "
