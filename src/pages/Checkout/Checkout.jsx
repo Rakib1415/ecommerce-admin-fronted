@@ -1,10 +1,14 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
 import CartItem from '../../components/CartItem/CartItem';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
+import { clearCart } from '../../stores/features/cartSlice';
 
 function Checkout() {
+  const dispatch = useDispatch();
+  const { items } = useSelector((state) => state.cart);
   return (
     <div className="container my-6">
       <div className="w-full p-8 bg-white shadow-lg">
@@ -24,12 +28,17 @@ function Checkout() {
                   <th className="text-right">Price</th>
                 </tr>
               </thead>
-
               <tbody>
-                <CartItem />
-                <CartItem />
+                {items.map((item) => (
+                  <CartItem key={item.id} item={item} />
+                ))}
               </tbody>
             </table>
+            {items.length && (
+              <CustomButton onClick={() => dispatch(clearCart())} type="button">
+                <span className="ml-2 mt-5px">Clear Cart</span>
+              </CustomButton>
+            )}
           </div>
           <OrderDetail />
         </div>

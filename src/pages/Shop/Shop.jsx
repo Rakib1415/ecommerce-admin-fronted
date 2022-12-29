@@ -1,10 +1,21 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Card from '../../components/Card/Card';
 import MessageCard from '../../components/MessageCard/MessageCard';
 import ProductContainer from '../../components/ProductContainer/ProductContainer';
+import Spinner from '../../components/Spinner/Spinner';
+import { retrieveProducts } from '../../stores/features/shopSlice';
 
 function Shop() {
-  return (
+  const dispatch = useDispatch();
+  const { isLoading } = useSelector((state) => state.shop);
+  useEffect(() => {
+    dispatch(retrieveProducts());
+  }, [dispatch]);
+
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <>
       <div className="container min-w-screen my-10">
         <div className="flex flex-wrap gap-2">

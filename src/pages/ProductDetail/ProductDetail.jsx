@@ -1,14 +1,29 @@
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 import CustomButton from '../../components/CustomButton/CustomButton';
+import Spinner from '../../components/Spinner/Spinner';
+import { addItem } from '../../stores/features/cartSlice';
+import { findProductById } from '../../stores/features/productSlice';
 
 function ProductDetail() {
-  return (
+  const [count, setCount] = useState(1);
+  const dispatch = useDispatch();
+  const { item, isLoading } = useSelector((state) => state.product);
+
+  const { id } = useParams();
+  useEffect(() => {
+    dispatch(findProductById(id));
+  }, [dispatch, id]);
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className="relative container min-w-screen px-4 py-8">
       <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
         <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
           <img
             alt="Les Paul"
-            src="https://images.unsplash.com/photo-1620799139507-2a76f79a2f4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1072&q=80"
+            src={item?.attributes?.imageUrl}
             className="aspect-square w-full rounded-xl object-cover"
           />
         </div>
@@ -20,13 +35,15 @@ function ProductDetail() {
           <div className="mt-8 flex justify-between">
             <div className="max-w-[35ch]">
               <h1 className="text-2xl font-bold font-roboto">
-                Mens Casual Shirt
+                {item?.attributes?.title}
               </h1>
 
               <p className="mt-0.5 text-sm text-slate-400">SKU-2638</p>
             </div>
 
-            <p className="text-lg font-bold text-green-600">BDT 1500</p>
+            <p className="text-lg font-bold text-green-600">
+              BDT {item?.attributes?.price}
+            </p>
           </div>
 
           <details className="group relative mt-4">
@@ -34,12 +51,7 @@ function ProductDetail() {
               <div>
                 <div className="prose max-w-none group-open:hidden">
                   <h4>Product details:</h4>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsa veniam dicta beatae eos ex error culpa delectus rem
-                    tenetur, architecto quam nesciunt, dolor veritatis nisi
-                    minus inventore, rerum at recusandae?
-                  </p>
+                  <p>{item?.attributes?.description}</p>
                 </div>
               </div>
             </summary>
@@ -52,6 +64,11 @@ function ProductDetail() {
 
               <span className="inline-flex divide-x overflow-hidden rounded-md border bg-white shadow-sm">
                 <button
+                  onClick={() => {
+                    if (count > 1) {
+                      setCount((prevCount) => prevCount - 1);
+                    }
+                  }}
                   type="button"
                   className="inline-block px-2 text-gray-700 hover:bg-gray-50 focus:relative"
                   title="Edit Product"
@@ -63,11 +80,12 @@ function ProductDetail() {
                   type="number"
                   id="quantity"
                   min="1"
-                  value="1"
+                  value={count}
                   className="w-12 rounded border-gray-100 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                 />
 
                 <button
+                  onClick={() => setCount((prevCount) => prevCount + 1)}
                   type="button"
                   className="inline-block px-2 text-gray-700 hover:bg-gray-50 focus:relative"
                   title="Delete Product"
@@ -79,7 +97,12 @@ function ProductDetail() {
 
             {/* Add to bag btn */}
             <div className="mt-8 flex">
-              <CustomButton type="button">
+              <CustomButton
+                onClick={() =>
+                  dispatch(addItem({ quantity: count, cartItemToAdd: item }))
+                }
+                type="button"
+              >
                 <span className="text-sm font-medium"> Add to Bag </span>
 
                 <svg

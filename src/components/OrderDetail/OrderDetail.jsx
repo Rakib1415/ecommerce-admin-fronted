@@ -1,4 +1,11 @@
+import { useSelector } from 'react-redux';
+import { cartSubTotal } from '../../utils/cart';
+
 function OrderDetail() {
+  const { items } = useSelector((state) => state.cart);
+  const subTotal = cartSubTotal(items);
+  const total = subTotal * (1 / 10) + subTotal;
+  const vat = subTotal * (1 / 10);
   return (
     <div className="mx-4">
       <div className="w-full">
@@ -11,7 +18,7 @@ function OrderDetail() {
               Subtotal
             </div>
             <div className="lg:px-4 lg:py-2 m-2 font-bold text-center text-gray-900">
-              3000
+              {subTotal.toFixed(2)}
             </div>
           </div>
 
@@ -20,7 +27,7 @@ function OrderDetail() {
               VAT 10%
             </div>
             <div className="lg:px-4 lg:py-2 m-2 font-bold text-center text-gray-900">
-              300
+              {vat.toFixed(2)}
             </div>
           </div>
           <div className="flex justify-between pt-4 border-b text-base">
@@ -28,7 +35,7 @@ function OrderDetail() {
               Total
             </div>
             <div className="lg:px-4 lg:py-2 m-2 font-bold text-center text-gray-900">
-              3300
+              {total.toFixed(2)}
             </div>
           </div>
         </div>

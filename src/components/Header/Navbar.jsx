@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { logout } from '../../stores/features/authSlice';
+import { cartItemsCount } from '../../utils/cart';
 
 const activeStyle = {
   color: 'yellow',
@@ -9,6 +10,7 @@ const activeStyle = {
 function Navbar() {
   const [toggleHamburger, setToggleHamburger] = useState(false);
   const { isLoggedIn } = useSelector((state) => state.auth);
+  const { items } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const showNavbar = () => {
     setToggleHamburger(!toggleHamburger);
@@ -117,7 +119,9 @@ function Navbar() {
 
           <div className="relative mt-4 md:mt-0 flex">
             <Link to="/checkout" className="relative px-5 py-1 cursor-pointer">
-              <span className="text-white absolute top-2.5 right-8">0</span>
+              <span className="text-white absolute top-2.5 right-8">
+                {cartItemsCount(items)}
+              </span>
               <svg
                 style={{ color: 'white' }}
                 xmlns="http://www.w3.org/2000/svg"

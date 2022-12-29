@@ -6,6 +6,7 @@ import AdminAddProduct from './pages/Admin-add-product/AdminAddProduct';
 import Admin from './pages/Admin-dashboard/Admin';
 import AdminProducts from './pages/Admin-products/AdminProducts';
 import AdminUsers from './pages/Admin-users/AdminUsers';
+import Catalog from './pages/Catalog/Catalog';
 import Checkout from './pages/Checkout/Checkout';
 import DashboardOverview from './pages/Dashboard-overview/DashboardOverview';
 import Home from './pages/Home/Home';
@@ -24,6 +25,7 @@ function App() {
           <Route path="signup" element={<Signup />} />
         </Route>
         <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/:id" element={<Catalog />} />
         <Route path="/shop/product/:id" element={<ProductDetail />} />
         <Route path="/*" element={<PrivateOutlet />}>
           <Route path="checkout" element={<Checkout />} />
