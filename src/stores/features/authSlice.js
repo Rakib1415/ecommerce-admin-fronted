@@ -47,7 +47,7 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.isLoading = false;
       state.currentUser = action.payload;
-      state.message = 'you have register successfully!';
+      state.message = '';
     },
     [register.rejected]: (state, action) => {
       state.isLoggedIn = false;
@@ -61,7 +61,7 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.isLoading = false;
       state.currentUser = action.payload;
-      state.message = 'you have login successfully!';
+      state.message = '';
     },
     [login.rejected]: (state, action) => {
       state.isLoggedIn = false;

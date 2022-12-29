@@ -1,9 +1,7 @@
-import axios from 'axios';
-
-const baseURL = 'https://strapi-demo-app-hzjm.onrender.com/api';
+import axios from '../axios';
 
 const register = async ({ username, email, phone, password }) => {
-  const response = await axios.post(`${baseURL}/auth/local/register`, {
+  const response = await axios.post(`/auth/local/register`, {
     username,
     email,
     phone_number: phone,
@@ -17,7 +15,7 @@ const register = async ({ username, email, phone, password }) => {
 };
 
 const login = async ({ email, password }) => {
-  const response = await axios.post(`${baseURL}/auth/local`, {
+  const response = await axios.post(`/auth/local`, {
     identifier: email,
     password,
   });

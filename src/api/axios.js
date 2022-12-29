@@ -1,12 +1,17 @@
-// import axios from 'axios';
+import axios from 'axios';
+import authHeader from './services/auth-header';
 
-// const config = {
-//   baseURL: import.meta.env.VITE_API_BASE_URL,
-//   // timeout : 3000,
-//   headers: {
-//     'Content-Type': 'application/json',
-//   },
-//   withCredentials: false,
-// };
+const apiBaseURL = 'https://strapi-demo-app-hzjm.onrender.com/api';
+const Authorization = authHeader();
 
-// export default axios.create(config);
+const config = {
+  baseURL: apiBaseURL,
+  // timeout : 3000,
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization,
+  },
+  withCredentials: false,
+};
+
+export default axios.create(config);
