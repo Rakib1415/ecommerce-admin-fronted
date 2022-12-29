@@ -1,7 +1,7 @@
 import axios from '../axios';
 
 const getAll = () => {
-  return axios.get('/products');
+  return axios.get('/products?pagination[page]=1&pagination[pageSize]=50');
 };
 
 const get = (id) => {

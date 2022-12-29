@@ -109,7 +109,7 @@ function Navbar() {
               </NavLink>
             )}
             <NavLink
-              to="/admin"
+              to="/admin/dashboard"
               style={({ isActive }) => (isActive ? activeStyle : undefined)}
               className="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
             >

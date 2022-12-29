@@ -1,6 +1,5 @@
 const authHeader = () => {
-  const user = localStorage.getItem('currentUser');
-
+  const user = JSON.parse(localStorage.getItem('currentUser'));
   if (user && user.jwt) {
     return { Authorization: `Bearer ${user.jwt}` };
   }
