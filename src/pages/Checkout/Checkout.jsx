@@ -1,14 +1,15 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import CartItem from '../../components/CartItem/CartItem';
-import CustomButton from '../../components/CustomButton/CustomButton';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
-import { clearCart } from '../../stores/features/cartSlice';
+import StripeButton from '../../components/StripeButton/StripeButton';
+import { cartSubTotal } from '../../utils/cart';
 
 function Checkout() {
-  const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cart);
+  const subTotal = cartSubTotal(items);
+  const total = subTotal * (1 / 10) + subTotal;
   return (
     <div className="container my-6">
       <div className="w-full p-8 bg-white shadow-lg">
@@ -34,18 +35,19 @@ function Checkout() {
                 ))}
               </tbody>
             </table>
-            {items.length && (
-              <CustomButton onClick={() => dispatch(clearCart())} type="button">
-                <span className="ml-2 mt-5px">Clear Cart</span>
-              </CustomButton>
-            )}
           </div>
           <OrderDetail />
         </div>
         <div className="lg:w-1/3 ml-auto">
-          <CustomButton type="button">
+          {/* <CustomButton type="button">
             <span className="ml-2 mt-5px">Pay and Place order</span>
-          </CustomButton>
+          </CustomButton> */}
+          <StripeButton price={total} />
+        </div>
+        <div className="text-center text-red-400">
+          please use the following test credit card for payment
+          <br />
+          4242 4242 4242 4242 - exp: 01-2023 - CVV: 123
         </div>
       </div>
     </div>
