@@ -6,7 +6,7 @@
 
 First we planned how an e-commerce web application was structured and its merits of events and interaction to justify the user experience.
 For that we explore some real world e-commerce like ROKOMARI and other applications and see the interaction of users then try to list the sections that need to be scrutinized.
-After selecting an application site we mixed our thoughts to build the site as modern trendy. We listed the UI and layout of the project regarding our requirements. We also took a styled framework Material UI so that it could look glossy.
+After selecting an application site we mixed our thoughts to build the site as modern trendy. We listed the UI and layout of the project regarding our requirements.
 
 ## Making of UI
 
@@ -91,6 +91,22 @@ Base Project Requirement -You have to create an Ecommerce application containing
 
 - A payment system will be added with a stripe
 - Contact
+
+### Admin Dashboard
+
+- Overview about users and products
+
+### Admin Users
+
+- Users details table
+
+### Admin Products
+
+- products table
+
+### Admin Add Product
+
+- add can add new Product
 
 ## Deployment:
 
